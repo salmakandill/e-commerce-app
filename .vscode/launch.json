@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "e_commerce_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "e_commerce_app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "e_commerce_app (Flutter Tests)",
+            "program": "test",
+            "request": "launch",
+            "type": "dart"
+        },
+        
+    ]
+}
