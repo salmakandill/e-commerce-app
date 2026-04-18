@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/screens/homepae.dart';
+import 'package:e_commerce_app/screens/homepage.dart';
 import 'package:e_commerce_app/screens/signup_page.dart';
 import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:e_commerce_app/widgets/custom_header.dart';
