@@ -50,7 +50,7 @@ class MyprofilePage extends StatelessWidget {
                           'assets/images/taylorswift.jfif',
                         ),
                       ),
-                      SizedBox(width: 20),
+                      
                     ],
                   ),
                   SizedBox(width: 20),

@@ -1,11 +1,12 @@
 import 'package:e_commerce_app/widgets/app_colors.dart';
 import 'package:e_commerce_app/widgets/products_model.dart';
+// import 'package:e_commerce_app/widgets/products_model.dart';
 import 'package:e_commerce_app/widgets/text_styling.dart';
 import 'package:flutter/material.dart';
 
 class CustomProductcard extends StatefulWidget {
-  final ProductsModel productmodel;
-  const CustomProductcard({super.key, required this.productmodel});
+  final ProductsModel model;
+  const CustomProductcard({super.key, required this.model});
 
   @override
   State<CustomProductcard> createState() => _CustomProductcardState();
@@ -17,37 +18,64 @@ class _CustomProductcardState extends State<CustomProductcard> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
 
-      child: SizedBox(
-        width: 180,
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-              child: Image.asset(
-                widget.productmodel.imageurl,
-                fit: BoxFit.cover,
-                height: 134,
-                width: 185,
-              ),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 6,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                  child: Image.network(
+                    widget.model.imageurl,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
+                ),
+                Positioned(
+                  right: 6,
+                  top: 6,
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.favorite_border,
+                      size: 36,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Padding(
+          ),
+          Expanded(
+            flex: 4,
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextStyles(
-                        text: widget.productmodel.title,
-                        fontSize: 20,
-                        appColor: AppColors.headding,
-                      ),
-                      TextStyles(
-                        text: widget.productmodel.price,
-                        fontSize: 20,
-                        appColor: AppColors.buttonColor,
-                      ),
-                    ],
+                  Expanded(
+                    flex: 4,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.model.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
+                        ),
+
+                        TextStyles(
+                          text: widget.model.price,
+                          fontSize: 20,
+                          appColor: AppColors.buttonColor,
+                        ),
+                      ],
+                    ),
                   ),
                   Spacer(),
                   IconButton(
@@ -59,8 +87,8 @@ class _CustomProductcardState extends State<CustomProductcard> {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

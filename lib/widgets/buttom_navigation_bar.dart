@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/screens/homepae.dart';
 import 'package:e_commerce_app/screens/myprofile_page.dart';
 import 'package:e_commerce_app/screens/products_page.dart';
 import 'package:e_commerce_app/widgets/app_colors.dart';
@@ -23,7 +24,7 @@ class _ButtomNavigationBarIconsState extends State<ButtomNavigationBarIcons> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ProductsPage()),
+              MaterialPageRoute(builder: (context) => HomePage()),
             );
           },
           icon: Icon(Icons.home),
@@ -37,7 +38,12 @@ class _ButtomNavigationBarIconsState extends State<ButtomNavigationBarIcons> {
           color: AppColors.hinttext,
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProductsPage()),
+            );
+          },
           icon: Icon(Icons.shopping_bag),
           style: IconButton.styleFrom(iconSize: 35),
           color: AppColors.hinttext,
@@ -51,7 +57,7 @@ class _ButtomNavigationBarIconsState extends State<ButtomNavigationBarIcons> {
           },
           icon: Icon(Icons.person),
           style: IconButton.styleFrom(iconSize: 35),
-          color: AppColors.iconscolor,
+          color: AppColors.hinttext,
         ),
       ],
     );

@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/screens/products_page.dart';
+import 'package:e_commerce_app/screens/homepae.dart';
 import 'package:e_commerce_app/screens/signup_page.dart';
 import 'package:e_commerce_app/widgets/custom_button.dart';
 import 'package:e_commerce_app/widgets/custom_header.dart';
@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ProductsPage()),
+                      MaterialPageRoute(builder: (context) => HomePage()),
                     );
                   },
                 ),

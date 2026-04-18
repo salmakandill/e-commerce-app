@@ -1,5 +1,5 @@
+import 'package:e_commerce_app/api/server.dart';
 import 'package:e_commerce_app/screens/login_page.dart';
-import 'package:e_commerce_app/screens/myprofile_page.dart';
 import 'package:e_commerce_app/screens/product_details.dart';
 import 'package:e_commerce_app/widgets/app_colors.dart';
 import 'package:e_commerce_app/widgets/custom_productcard.dart';
@@ -15,68 +15,19 @@ class ProductsPage extends StatefulWidget {
 }
 
 class _ProductsPageState extends State<ProductsPage> {
-  List<ProductsModel> products = [
-    ProductsModel(
-      imageurl: 'assets/images/watch.jpg',
-      title: 'Watch',
-      price: '\$646',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/shoes.jpg',
-      title: 'Nike Shoes',
-      price: '\$66',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/lgtv.jpg',
-      title: 'LG TV',
-      price: '\$66',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/airpods.jpg',
-      title: 'Airpods',
-      price: '\$66',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/hoodie.jpg',
-      title: 'Hoodie',
-      price: '\$60',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/jacket.jpg',
-      title: 'Jacket',
-      price: '\$80',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/watch.jpg',
-      title: 'Watch',
-      price: '\$646',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/shoes.jpg',
-      title: 'Shoes',
-      price: '\$66',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/lgtv.jpg',
-      title: 'LG TV',
-      price: '\$66',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/airpods.jpg',
-      title: 'Airpods',
-      price: '\$66',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/hoodie.jpg',
-      title: 'Hoodie',
-      price: '\$60',
-    ),
-    ProductsModel(
-      imageurl: 'assets/images/jacket.jpg',
-      title: 'Jacket',
-      price: '\$80',
-    ),
-  ];
+  List<ProductsModel> products = [];
+  final ApiServer apiService = ApiServer();
+
+  Future<void> callingapi() async {
+    products = await apiService.getProducts();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    callingapi();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,43 +49,41 @@ class _ProductsPageState extends State<ProductsPage> {
           appColor: AppColors.headding,
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyprofilePage()),
-              );
-            },
-            icon: Icon(Icons.person),
-            style: IconButton.styleFrom(iconSize: 30),
-          ),
-        ],
       ),
 
-      body: GridView.builder(
-        padding: EdgeInsets.only(left: 15, right: 15),
-        itemCount: products.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.8,
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 15,
-        ),
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      ProductDetails(products: products[index]),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: GridView.builder(
+                padding: EdgeInsets.only(left: 15, right: 15),
+                itemCount: products.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.8,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
                 ),
-              );
-            },
-            child: CustomProductcard(productmodel: products[index]),
-          );
-        },
+                itemBuilder: (context, index) {
+                  final product = products[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ProductDetails(products: product),
+                        ),
+                      );
+                    },
+                    child: CustomProductcard(model: product),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
