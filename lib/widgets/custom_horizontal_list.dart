@@ -42,7 +42,7 @@ class _CustomHorizontalListState extends State<CustomHorizontalList> {
         ),
 
         SizedBox(
-          height: 200,
+          height: 210,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: products.length,
@@ -50,7 +50,7 @@ class _CustomHorizontalListState extends State<CustomHorizontalList> {
               final product = products[index];
               return SizedBox(
                 width: 160,
-                child: CustomProductcard(model: product),
+                child: CustomProductcard(productsmodel: product),
               );
             },
           ),

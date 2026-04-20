@@ -1,65 +1,108 @@
+import 'package:e_commerce_app/screens/addproducts_page.dart';
 import 'package:e_commerce_app/screens/homepage.dart';
 import 'package:e_commerce_app/screens/myprofile_page.dart';
-import 'package:e_commerce_app/screens/products_page.dart';
+import 'package:e_commerce_app/screens/searchpage.dart';
 import 'package:e_commerce_app/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
-
-class ButtomNavigationBarIcons extends StatefulWidget {
-  const ButtomNavigationBarIcons({super.key});
+class ButtomNavigationBar extends StatefulWidget {
+  const ButtomNavigationBar({super.key});
 
   @override
-  State<ButtomNavigationBarIcons> createState() =>
-      _ButtomNavigationBarIconsState();
+  State<ButtomNavigationBar> createState() => _ButtomNavigationBarIconsState();
 }
 
-class _ButtomNavigationBarIconsState extends State<ButtomNavigationBarIcons> {
+class _ButtomNavigationBarIconsState extends State<ButtomNavigationBar> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      spacing: 10,
-      children: [
-        IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-            );
-          },
-          icon: Icon(Icons.home),
-          style: IconButton.styleFrom(iconSize: 35),
-          color: AppColors.hinttext,
+    return PersistentTabView(
+      tabs: [
+        PersistentTabConfig(
+          screen: HomePage(),
+          item: ItemConfig(
+            activeForegroundColor: AppColors.buttonColor,
+            icon: Icon(Icons.home),
+            iconSize: 40,
+          ),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.search),
-          style: IconButton.styleFrom(iconSize: 35),
-          color: AppColors.hinttext,
+        PersistentTabConfig(
+          screen: SearchPage(),
+          item: ItemConfig(
+            activeForegroundColor: AppColors.buttonColor,
+            icon: Icon(Icons.search),
+            iconSize: 40,
+          ),
         ),
-        IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProductsPage()),
-            );
-          },
-          icon: Icon(Icons.shopping_bag),
-          style: IconButton.styleFrom(iconSize: 35),
-          color: AppColors.hinttext,
+        PersistentTabConfig(
+          screen: AddproductsPage(),
+          item: ItemConfig(
+            activeForegroundColor: AppColors.buttonColor,
+            icon: Icon(Icons.shopping_bag),
+            iconSize: 40,
+          ),
         ),
-        IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyprofilePage()),
-            );
-          },
-          icon: Icon(Icons.person),
-          style: IconButton.styleFrom(iconSize: 35),
-          color: AppColors.hinttext,
+        PersistentTabConfig(
+          screen: MyprofilePage(),
+          item: ItemConfig(
+            activeForegroundColor: AppColors.buttonColor,
+            icon: Icon(Icons.person),
+            iconSize: 40,
+          ),
         ),
       ],
+      navBarBuilder: (navBarConfig) =>
+          Style10BottomNavBar(navBarConfig: navBarConfig),
     );
   }
 }
+// Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//       spacing: 10,
+//       children: [
+//         IconButton(
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (context) => HomePage()),
+//             );
+//           },
+//           icon: Icon(Icons.home),
+//           style: IconButton.styleFrom(iconSize: 35),
+//           color: AppColors.hinttext,
+//         ),
+//         IconButton(
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (context) => SearchPage()),
+//             );
+//           },
+//           icon: Icon(Icons.search),
+//           style: IconButton.styleFrom(iconSize: 35),
+//           color: AppColors.hinttext,
+//         ),
+//         IconButton(
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (context) => AddproductsPage()),
+//             );
+//           },
+//           icon: Icon(Icons.shopping_bag),
+//           style: IconButton.styleFrom(iconSize: 35),
+//           color: AppColors.hinttext,
+//         ),
+//         IconButton(
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (context) => MyprofilePage()),
+//             );
+//           },
+//           icon: Icon(Icons.person),
+//           style: IconButton.styleFrom(iconSize: 35),
+//           color: AppColors.hinttext,
+//         ),
+//       ],
+//     );

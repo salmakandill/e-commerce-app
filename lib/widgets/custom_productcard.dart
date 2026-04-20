@@ -1,12 +1,11 @@
 import 'package:e_commerce_app/widgets/app_colors.dart';
 import 'package:e_commerce_app/widgets/products_model.dart';
-// import 'package:e_commerce_app/widgets/products_model.dart';
 import 'package:e_commerce_app/widgets/text_styling.dart';
 import 'package:flutter/material.dart';
 
 class CustomProductcard extends StatefulWidget {
-  final ProductsModel model;
-  const CustomProductcard({super.key, required this.model});
+  final ProductsModel productsmodel;
+  const CustomProductcard({super.key, required this.productsmodel});
 
   @override
   State<CustomProductcard> createState() => _CustomProductcardState();
@@ -21,15 +20,16 @@ class _CustomProductcardState extends State<CustomProductcard> {
       child: Column(
         children: [
           Expanded(
-            flex: 6,
+            flex: 4,
             child: Stack(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                   child: Image.network(
-                    widget.model.imageurl,
+                    widget.productsmodel.imageurl,
                     fit: BoxFit.cover,
                     width: double.infinity,
+                    height: 150,
                   ),
                 ),
                 Positioned(
@@ -48,7 +48,7 @@ class _CustomProductcardState extends State<CustomProductcard> {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 3,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -59,7 +59,7 @@ class _CustomProductcardState extends State<CustomProductcard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.model.title,
+                          widget.productsmodel.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -70,7 +70,7 @@ class _CustomProductcardState extends State<CustomProductcard> {
                         ),
 
                         TextStyles(
-                          text: widget.model.price,
+                          text: widget.productsmodel.price.toString(),
                           fontSize: 20,
                           appColor: AppColors.buttonColor,
                         ),

@@ -30,7 +30,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         top: Radius.circular(20),
                         bottom: Radius.circular(20),
                       ),
-                      child: Image.asset(
+                      child: Image.network(
                         widget.products.imageurl,
                         width: double.infinity,
                         height: 450,
@@ -113,7 +113,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
 
                     Text(
-                      widget.products.price,
+                      widget.products.price.toString(),
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
@@ -133,7 +133,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 ),
                 Text(
-                  'Culpa aliquam consequuntur veritatis at consequuntur praesentium beatae temporibus nobis. Velit dolorem facilis neque autem. Itaque voluptatem expedita qui eveniet id veritatis eaque. Blanditiis quia placeat nemo. Nobis laudantium nesciunt perspiciatis sit eligendi.',
+                  widget.products.description,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,

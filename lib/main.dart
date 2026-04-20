@@ -1,5 +1,4 @@
-
-import 'package:e_commerce_app/screens/login_page.dart';
+import 'package:e_commerce_app/widgets/buttom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,14 +7,13 @@ void main() {
 
 class ECommerceAPP extends StatelessWidget {
   const ECommerceAPP({super.key});
-  static const maincolor = Color.fromARGB(255, 130, 96, 139);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Manrope'),
-      home: LoginPage(),
+      home: ButtomNavigationBar(),
     );
   }
 }

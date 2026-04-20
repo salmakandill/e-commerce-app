@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/widgets/app_colors.dart';
-import 'package:e_commerce_app/widgets/buttom_navigation_bar.dart';
 import 'package:e_commerce_app/widgets/custom_horizontal_list.dart';
 import 'package:flutter/material.dart';
 
@@ -123,7 +122,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: ButtomNavigationBarIcons(),
+      // bottomNavigationBar: ButtomNavigationBarIcons(),
     );
   }
 }
