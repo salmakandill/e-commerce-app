@@ -30,6 +30,9 @@ class _CustomProductcardState extends State<CustomProductcard> {
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: 150,
+                    errorBuilder:(context,error,stackTrace){
+                        return Center(child: Icon(Icons.broken_image, size: 35));
+                    }
                   ),
                 ),
                 Positioned(

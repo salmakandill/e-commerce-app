@@ -35,6 +35,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                         width: double.infinity,
                         height: 450,
                         fit: BoxFit.cover,
+                        errorBuilder:(context,error,stackTrace){
+                        return Center(child: Icon(Icons.broken_image, size: 35));
+                    }
                       ),
                     ),
                     Positioned(
