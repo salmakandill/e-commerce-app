@@ -1,7 +1,7 @@
 import 'dart:developer';
-import 'package:e_commerce_app/screens/products_page.dart';
+import 'package:e_commerce_app/features/products/presentation/screens/products_page.dart';
 import 'package:e_commerce_app/widgets/app_colors.dart';
-import 'package:e_commerce_app/widgets/custom_labeled_textfield.dart';
+import 'package:e_commerce_app/features/auth/presentation/widgets/custom_labeled_textfield.dart';
 import 'package:e_commerce_app/widgets/text_styling.dart';
 import 'package:flutter/material.dart';
 

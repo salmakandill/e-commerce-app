@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/widgets/buttom_navigation_bar.dart';
+import 'package:e_commerce_app/features/auth/presentation/Screens/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class ECommerceAPP extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Manrope'),
-      home: ButtomNavigationBar(),
+      home: LoginPage(),
     );
   }
 }

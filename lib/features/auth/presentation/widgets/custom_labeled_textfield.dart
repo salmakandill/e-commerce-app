@@ -12,6 +12,7 @@ class CustomLabeledTextfield extends StatefulWidget {
   final IconButton? suffixIcon;
   final String? hinttext;
   final int? maxline;
+  final String? Function(String?)? validator;
   const CustomLabeledTextfield({
     super.key,
     required this.title,
@@ -20,7 +21,7 @@ class CustomLabeledTextfield extends StatefulWidget {
     this.ispassword = false,
     this.isPhonennum = false,
     this.hinttext,
-    this.maxline,
+    this.maxline, this.validator,
   });
 
   @override
@@ -51,9 +52,11 @@ class _CustumLabeledTextfieldState extends State<CustomLabeledTextfield> {
                 ),
                 onChanged: (phone) {},
               )
-            : TextField(
+            : TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: widget.validator,
                 controller: widget.controller,
-                maxLines: widget.maxline,
+                // maxLines: widget.maxline,
                 obscureText: widget.ispassword ? !isVisable : isVisable,
                 decoration: InputDecoration(
                   suffixIcon: widget.ispassword

@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/widgets/app_colors.dart';
-import 'package:e_commerce_app/widgets/custom_horizontal_list.dart';
+import 'package:e_commerce_app/features/products/presentation/widgets/custom_horizontal_list.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

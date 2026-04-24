@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/screens/products_page.dart';
-import 'package:e_commerce_app/widgets/custom_profilecards.dart';
+import 'package:e_commerce_app/features/products/presentation/screens/products_page.dart';
+import 'package:e_commerce_app/features/profile/presentation/widgets/custom_profilecards.dart';
 import 'package:flutter/material.dart';
 
 class MyprofilePage extends StatelessWidget {

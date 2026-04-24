@@ -1,7 +1,7 @@
-import 'package:e_commerce_app/screens/addproducts_page.dart';
-import 'package:e_commerce_app/screens/homepage.dart';
-import 'package:e_commerce_app/screens/myprofile_page.dart';
-import 'package:e_commerce_app/screens/searchpage.dart';
+import 'package:e_commerce_app/features/products/presentation/screens/addproducts_page.dart';
+import 'package:e_commerce_app/features/products/presentation/screens/homepage.dart';
+import 'package:e_commerce_app/features/products/presentation/screens/searchpage.dart';
+import 'package:e_commerce_app/features/profile/presentation/screens/myprofile_page.dart';
 import 'package:e_commerce_app/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';

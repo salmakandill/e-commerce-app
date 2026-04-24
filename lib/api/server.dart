@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:e_commerce_app/widgets/categorymodel.dart';
-import 'package:e_commerce_app/widgets/products_model.dart';
+import 'package:e_commerce_app/models/categorymodel.dart';
+import 'package:e_commerce_app/models/products_model.dart';
 
 class ApiServer {
   final Dio dio = Dio();
