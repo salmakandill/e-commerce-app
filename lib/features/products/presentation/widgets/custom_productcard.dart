@@ -1,17 +1,20 @@
+import 'package:dio/dio.dart';
 import 'package:e_commerce_app/widgets/app_colors.dart';
 import 'package:e_commerce_app/models/products_model.dart';
 import 'package:e_commerce_app/widgets/text_styling.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer';
 
 class CustomProductcard extends StatefulWidget {
   final ProductsModel productsmodel;
-  const CustomProductcard({super.key, required this.productsmodel});
-
+  final void Function()? onPressed;
+  const CustomProductcard({super.key, required this.productsmodel, required this.onPressed});
   @override
   State<CustomProductcard> createState() => _CustomProductcardState();
 }
 
 class _CustomProductcardState extends State<CustomProductcard> {
+ 
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,9 +33,9 @@ class _CustomProductcardState extends State<CustomProductcard> {
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: 150,
-                    errorBuilder:(context,error,stackTrace){
-                        return Center(child: Icon(Icons.broken_image, size: 35));
-                    }
+                    errorBuilder: (context, error, stackTrace) {
+                      return Center(child: Icon(Icons.broken_image, size: 35));
+                    },
                   ),
                 ),
                 Positioned(
@@ -82,10 +85,10 @@ class _CustomProductcardState extends State<CustomProductcard> {
                   ),
                   Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: widget.onPressed,
                     style: IconButton.styleFrom(iconSize: 35),
                     color: AppColors.buttonColor,
-                    icon: Icon(Icons.add_circle),
+                    icon: Icon(Icons.delete),
                   ),
                 ],
               ),

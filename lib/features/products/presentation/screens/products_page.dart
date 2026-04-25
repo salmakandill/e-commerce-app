@@ -1,3 +1,5 @@
+import 'dart:developer';
+import 'package:dio/dio.dart';
 import 'package:e_commerce_app/api/server.dart';
 import 'package:e_commerce_app/features/products/presentation/screens/category_products.dart';
 import 'package:e_commerce_app/features/auth/presentation/Screens/login_page.dart';
@@ -17,16 +19,33 @@ class ProductsPage extends StatefulWidget {
 }
 
 class _ProductsPageState extends State<ProductsPage> {
-  List<ProductsModel> products = [];
+  late Future<List<ProductsModel>> products;
   List<Categorymodel> categories = [];
   List<ProductsModel> filteredcategories = [];
 
   final ApiServer apiService = ApiServer();
 
   Future<void> callingapi() async {
-    products = await apiService.getProducts();
+    products = apiService.getProducts();
     categories = await apiService.getCategory();
     setState(() {});
+  }
+
+  bool isLoading = false;
+  Dio dio = Dio();
+  Future<void> deleteproduct(int id) async {
+    try {
+      final response = await dio.delete(
+        'https://api.escuelajs.co/api/v1/products/${id}',
+      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Product has been deleted')));
+    } on DioException catch (e) {
+      log('Error Dio: ${e.response?.data['message']}');
+    } on Exception catch (e) {
+      log('Error ${e}');
+    }
   }
 
   @override
@@ -108,28 +127,47 @@ class _ProductsPageState extends State<ProductsPage> {
           ),
           Expanded(
             flex: 4,
-            child: GridView.builder(
-              padding: EdgeInsets.only(left: 15, right: 15),
-              itemCount: products.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.8,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
-              ),
-              itemBuilder: (context, index) {
-                final product = products[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProductDetails(products: product),
-                      ),
-                    );
-                  },
-                  child: CustomProductcard(productsmodel: product),
-                );
+            child: FutureBuilder(
+              future: products,
+              builder: (context, snapShot) {
+                if (snapShot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapShot.hasData) {
+                  final products = snapShot.data;
+                  return GridView.builder(
+                    padding: EdgeInsets.only(left: 15, right: 15),
+                    itemCount: products!.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.8,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                    ),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ProductDetails(products: products[index]),
+                            ),
+                          );
+                        },
+                        child: CustomProductcard(
+                          productsmodel: products[index],
+                          onPressed: () async {
+                            await deleteproduct(products[index].id);
+                            await ApiServer().getProducts();
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  return Text('Error', style: TextStyle(fontSize: 30));
+                }
               },
             ),
           ),

@@ -50,7 +50,7 @@ class _CustomHorizontalListState extends State<CustomHorizontalList> {
               final product = products[index];
               return SizedBox(
                 width: 160,
-                child: CustomProductcard(productsmodel: product),
+                child: CustomProductcard(productsmodel: product, onPressed: () {  },),
               );
             },
           ),

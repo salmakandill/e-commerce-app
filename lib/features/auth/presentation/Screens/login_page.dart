@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:e_commerce_app/features/auth/data/validators.dart';
-import 'package:e_commerce_app/features/products/presentation/screens/homepage.dart';
 import 'package:e_commerce_app/features/auth/presentation/Screens/signup_page.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/custom_button.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/custom_header.dart';
@@ -104,10 +103,10 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         login();
-                        print('email: ${emailController.text}');
-                        print('Password: ${passwordController.text}');
+                        log('email: ${emailController.text}');
+                        log('Password: ${passwordController.text}');
                       } else {
-                        print('Validation Fiales');
+                        log('Validation Fiales');
                       }
                       // Navigator.push(
                       //   context,

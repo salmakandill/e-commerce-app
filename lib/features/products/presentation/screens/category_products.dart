@@ -74,7 +74,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
                       );
                     },
                     child: CustomProductcard(
-                      productsmodel: filteredProducts[index],
+                      productsmodel: filteredProducts[index], onPressed: () {  },
                     ),
                   );
                 },

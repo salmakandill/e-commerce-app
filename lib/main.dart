@@ -1,4 +1,5 @@
-import 'package:e_commerce_app/features/auth/presentation/Screens/login_page.dart';
+import 'package:e_commerce_app/features/products/presentation/screens/addproducts_page.dart';
+import 'package:e_commerce_app/features/products/presentation/screens/products_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class ECommerceAPP extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Manrope'),
-      home: LoginPage(),
+      home: ProductsPage(),
     );
   }
 }

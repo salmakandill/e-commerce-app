@@ -126,9 +126,9 @@ class _SignupPageState extends State<SignupPage> {
                       
                       if (formKey.currentState!.validate()) {
                         signup();
-                        print('email: ${emailController.text}');
-                        print('Phone: ${nameController.text}');
-                        print('Password: ${passwordController.text}');
+                        log('email: ${emailController.text}');
+                        log('Phone: ${nameController.text}');
+                        log('Password: ${passwordController.text}');
                         // Navigator.push(
                         //   context,
                         //   MaterialPageRoute(
@@ -136,7 +136,7 @@ class _SignupPageState extends State<SignupPage> {
                         //   ),
                         // );
                       } else {
-                        print('Validation Fiales');
+                        log('Validation Fiales');
                       }
                     },
                   ),

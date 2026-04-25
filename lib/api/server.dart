@@ -7,12 +7,10 @@ class ApiServer {
 
   Future<List<ProductsModel>> getProducts() async {
     final response = await dio.get('https://api.escuelajs.co/api/v1/products');
-    List<ProductsModel> products = [];
-    for (var element in response.data) {
-      final ProductsModel product = ProductsModel.getfromjson(element);
-      products.add(product);
-    }
-    return products;
+
+    return (response.data as List)
+        .map((element) => ProductsModel.getfromjson(element))
+        .toList();
   }
 
   Future<List<Categorymodel>> getCategory() async {
@@ -27,7 +25,9 @@ class ApiServer {
     return categories;
   }
 
-  Future<List<ProductsModel>> getFilteredcategory({required String slug}) async {
+  Future<List<ProductsModel>> getFilteredcategory({
+    required String slug,
+  }) async {
     final response = await dio.get(
       'https://api.escuelajs.co/api/v1/products/?categorySlug=$slug',
     );
@@ -38,6 +38,4 @@ class ApiServer {
     }
     return filteredcategories;
   }
-
-  
 }
